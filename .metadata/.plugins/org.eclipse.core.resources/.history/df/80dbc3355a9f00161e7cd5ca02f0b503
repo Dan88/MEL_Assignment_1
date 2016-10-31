@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="statesml" nsURI="http://www.example.org/statesml" nsPrefix="statesml">
+  <eClassifiers xsi:type="ecore:EClass" name="SystemComponent"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="StringType" instanceTypeName="String"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BooleanType" instanceClassName="java.lang.Boolean"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Name" eSuperTypes="#//SystemComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//SystemComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NameAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DataTypeAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Functions" eSuperTypes="#//SystemComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NameFunctions"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ParametersFunctions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterDefinition" eSuperTypes="#//Functions">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NameParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DataTypeParameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataTypes" eSuperTypes="#//SystemComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NameType" eType="#//StringType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FunctionType" eType="#//StringType"
+        defaultValueLiteral="equals"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemLibary">
+    <eTypeParameters name="T"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LibaryName"/>
+  </eClassifiers>
+</ecore:EPackage>

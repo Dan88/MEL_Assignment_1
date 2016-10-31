@@ -8,23 +8,39 @@
   <genPackages prefix="Statesml" disposableProviderFactory="true" ecorePackage="statesml.ecore#/">
     <genDataTypes ecoreDataType="statesml.ecore#//StringType"/>
     <genDataTypes ecoreDataType="statesml.ecore#//BooleanType"/>
+    <genDataTypes ecoreDataType="statesml.ecore#//IntergerType"/>
     <genClasses ecoreClass="statesml.ecore#//SystemComponent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//SystemComponent/Name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//SystemComponent/Attribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//SystemComponent/Functions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//SystemComponent/NameComponent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference statesml.ecore#//SystemComponent/attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference statesml.ecore#//SystemComponent/functions"/>
     </genClasses>
-    <genClasses ecoreClass="statesml.ecore#//Name"/>
     <genClasses ecoreClass="statesml.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//Attribute/NameAttribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//Attribute/DataType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference statesml.ecore#//Attribute/datatypes"/>
     </genClasses>
     <genClasses ecoreClass="statesml.ecore#//Functions">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//Functions/NameFunctions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//Functions/Parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//Functions/inParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//Functions/outParameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference statesml.ecore#//Functions/parameterdefinition"/>
     </genClasses>
     <genClasses ecoreClass="statesml.ecore#//ParameterDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//ParameterDefinition/NameParameter"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//ParameterDefinition/DataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//ParameterDefinition/DataTypeParameter"/>
+    </genClasses>
+    <genClasses ecoreClass="statesml.ecore#//DataTypes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//DataTypes/NameType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//DataTypes/FunctionType"/>
+    </genClasses>
+    <genClasses ecoreClass="statesml.ecore#//SystemLibary">
+      <genTypeParameters ecoreTypeParameter="statesml.ecore#//SystemLibary/T"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//SystemLibary/LibaryName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference statesml.ecore#//SystemLibary/systemcomponent"/>
+    </genClasses>
+    <genClasses ecoreClass="statesml.ecore#//DataTypeLibary">
+      <genTypeParameters ecoreTypeParameter="statesml.ecore#//DataTypeLibary/T"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute statesml.ecore#//DataTypeLibary/NameDTLibary"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference statesml.ecore#//DataTypeLibary/datatypes"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
