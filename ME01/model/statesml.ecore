@@ -52,74 +52,49 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="terminalstate" eType="#//TerminalState"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="initialstate" lowerBound="1"
-        eType="#//InitialState" transient="true" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="anotherstate" upperBound="-1"
-        eType="#//AlternativeState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="InitialState" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TerminalState" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AlternativeSate" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NodeType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingedge" lowerBound="1"
-        eType="#//IncomingEdge" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingedge" lowerBound="1"
-        eType="#//OutgoingEdge" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectionDivergence" eSuperTypes="#//NodeType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingedge" lowerBound="1"
-        eType="#//IncomingEdge" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingedge" lowerBound="2"
-        upperBound="-1" eType="#//OutgoingEdge" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SelectionConvergence" eSuperTypes="#//NodeType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingedge" lowerBound="2"
-        upperBound="-1" eType="#//IncomingEdge" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingedge" lowerBound="1"
-        eType="#//OutgoingEdge" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InitialState"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TerminalState">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingedge" lowerBound="1"
-        eType="#//IncomingEdge" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NodeType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionDivergence" eSuperTypes="#//NodeType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectionConvergence" eSuperTypes="#//NodeType"/>
   <eClassifiers xsi:type="ecore:EClass" name="SystemUnit" eSuperTypes="#//NamedElement.1">
     <eStructuralFeatures xsi:type="ecore:EReference" name="systemunitelement" upperBound="-1"
         eType="#//SystemUnitElement" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="function" upperBound="-1"
-        eType="#//Function.1" containment="true"/>
+        eType="#//FunctionCall" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute.1" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Edge" abstract="true" eSuperTypes="#//SystemUnitElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Edge" abstract="true" eSuperTypes="#//SystemUnitElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IncomingEdge" eType="#//Node"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//SystemUnitElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodetype" upperBound="-1"
         eType="#//NodeType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="OutgoingEdge" eType="#//Edge"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemUnitElement" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Event">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" upperBound="-1"
-        eType="#//Trigger" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eventtype" upperBound="-1"
         eType="#//EventType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" lowerBound="1"
+        eType="#//Trigger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="NodeType" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Function">
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionCall">
+    <eTypeParameters name="T"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Call">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="function" upperBound="-1"
-        eType="#//Function.1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="changeexpression" lowerBound="1"
+        eType="#//ChangeExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveValue" eSuperTypes="#//Parameter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="String" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Integer" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Boolean" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveValue" eSuperTypes="#//Parameter"/>
   <eClassifiers xsi:type="ecore:EClass" name="AttrbuteValue" eSuperTypes="#//Parameter"/>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger">
     <eStructuralFeatures xsi:type="ecore:EReference" name="transition" upperBound="-1"
@@ -129,16 +104,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" upperBound="-1"
         eType="#//State"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AlternativeState">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingedge" lowerBound="1"
-        eType="#//IncomingEdge" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingedge" lowerBound="1"
-        eType="#//OutgoingEdge" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IncomingEdge" eSuperTypes="#//Edge"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OutgoingEdge" eSuperTypes="#//Edge"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ChangeEvent" eSuperTypes="#//EventType">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ChangeExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeEvent" eSuperTypes="#//EventType"/>
   <eClassifiers xsi:type="ecore:EClass" name="EventType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeExpression"/>
 </ecore:EPackage>
