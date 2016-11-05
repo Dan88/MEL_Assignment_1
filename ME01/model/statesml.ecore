@@ -67,7 +67,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribute.1" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Edge" abstract="true" eSuperTypes="#//SystemUnitElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Edge" eSuperTypes="#//SystemUnitElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="IncomingEdge" eType="#//Node"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//SystemUnitElement">
@@ -87,7 +87,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Attribute"/>
   <eClassifiers xsi:type="ecore:EClass" name="NodeType" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionCall">
-    <eTypeParameters name="T"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
         eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="changeexpression" lowerBound="1"

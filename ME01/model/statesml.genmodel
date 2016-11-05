@@ -71,7 +71,6 @@
     <genClasses ecoreClass="statesml.ecore#//Attribute.1"/>
     <genClasses ecoreClass="statesml.ecore#//NodeType"/>
     <genClasses ecoreClass="statesml.ecore#//FunctionCall">
-      <genTypeParameters ecoreTypeParameter="statesml.ecore#//FunctionCall/T"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference statesml.ecore#//FunctionCall/parameter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference statesml.ecore#//FunctionCall/changeexpression"/>
     </genClasses>
